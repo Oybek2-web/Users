@@ -1,9 +1,7 @@
 from django.db import models
 from django.contrib.auth.models import User
 
-# ----------------------
-# Модель магазина
-# ----------------------
+
 class Magazin(models.Model):
     photo = models.ImageField(upload_to='images/', blank=True, null=True)
     title = models.CharField(max_length=50)
@@ -15,11 +13,8 @@ class Magazin(models.Model):
     def __str__(self):
         return self.title
 
-# ----------------------
-# Модель профиля пользователя
-# ----------------------
+
 class Profil(models.Model):
-    # Связь с пользователем: один пользователь = один профиль
     user = models.OneToOneField(User, on_delete=models.CASCADE, related_name='profil')
 
     profil_photo = models.ImageField(upload_to='images/', blank=True, null=True)
